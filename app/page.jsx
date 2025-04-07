@@ -10,7 +10,7 @@ import React, { useState } from 'react'
 
   return (
     <div>
-       <Navbar setActive={setActive}/>
+       {/* <Navbar setActive={setActive}/> */}
       <Header/>
       <MovieByCriteria/>
 
