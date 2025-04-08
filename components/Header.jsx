@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className='relative'>
     <div className='image-div '>
-      <Image className='w-full h-full opacity-60' src={images.bg} alt='Bg' width={500} height={500}/>
+     <Image className='w-full h-full opacity-60' src={images.bg} alt='Bg' width={500} height={500}/>
     <div className='absolute top-[50%] left-[50%] translate-x-[-50%]'>
     <Search/>
     </div>

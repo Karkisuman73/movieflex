@@ -38,3 +38,6 @@ body {
   
 
 }
+.spinner{
+  animation: spin 0.2s infinite;
+}

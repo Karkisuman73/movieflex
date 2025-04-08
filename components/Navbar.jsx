@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter} from "next/navigation";
 import React, { useState } from "react";
 
 const Navbar = ({ setActive }) => {
+  
   const router=useRouter();
   const [searchdata, setSearchdata] = useState("");
   const handleData = () => {
@@ -12,18 +13,18 @@ const Navbar = ({ setActive }) => {
     }
   };
   return (
-    <div className="flex justify-between p-4">
+    <div className="flex justify-between p-4 ">
       <Link href={"/"}>
         <div className="text-2xl font-bold">
-          <button> MovieFlex</button>
+          <button className="cursor-pointer hover:text-amber-300"> MovieFlex</button>
         </div>
       </Link>
       <div className="flex gap-x-4">
         <Link href={"/explore/movies"}>
-          <button>Movies</button>
+          <button className="cursor-pointer hover:text-amber-300">Movies</button>
         </Link>
         <Link href={"/explore/tvshows"}>
-          <button>TV shows</button>
+          <button className="cursor-pointer hover:text-amber-300">TV shows</button>
         </Link>
         <div>
           <input

@@ -9,15 +9,13 @@ const AllTvShows = () => {
     const[page,setPage]=useState(1)
     const {data}=useFetch(`/discover/tv?page=${page}`)
     const{ref,inView} =useInView();
-    console.log(data)
+   
     useEffect(()=>{
         if (data && inView) {
             setOld((prev)=>[...prev, ...data?.results]);
             
             setPage((prev)=>prev + 1);
-          } else {
-            console.log("not shown");
-          }
+          } 
         }, [inView, data]);
         
   return (

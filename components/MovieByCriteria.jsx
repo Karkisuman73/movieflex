@@ -9,15 +9,15 @@ const MovieByCriteria = () => {
 
     const {data, loading,error}= useFetch("/trending/movie/week")
     const {data:tvData, loading:tvLoading,error:tvError}= useFetch("/trending/tv/week")
-    const {data:toprated, }= useFetch("/movie/top_rated")
+    const {data:toprated,loading:toploading,error:toperror }= useFetch("/movie/top_rated")
     // const { data:recomended } = useFetch("/movie/recommendations");
 
 
   return (
     <div>
-      <CardGrid title={"Movies"} data={data} endpoint={"movie"}/>
-      <CardGrid title={"TV Shows"} data={tvData} endpoint={"tv"}/>
-      <CardGrid title={"Top Rated"} data={toprated} endpoint={"movie"}/>
+      <CardGrid title={"Movies"}  loading={loading} error={error} data={data} endpoint={"movie"}/>
+      <CardGrid title={"TV Shows"} loading={tvLoading} error={tvError}  data={tvData} endpoint={"tv"}/>
+      <CardGrid title={"Top Rated"} loading={toploading} error={toperror}  data={toprated} endpoint={"movie"}/>
       {/* <CardGrid title={"Recomended"} data={recomended}/> */}
     </div>
   )

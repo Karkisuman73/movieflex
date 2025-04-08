@@ -12,7 +12,7 @@ const DetailsPage = ({ movie, Id }) => {
   const { data: recomended } = useFetch(`/${movie}/${Id}/recommendations`);
   const { data: similar } = useFetch(`/${movie}/${Id}/similar`);
   const { data: Topcast } = useFetch(`/${movie}/${Id}/credits`);
-  console.log("movie",data);
+ 
   return (
     <>
       <div className="">
@@ -59,19 +59,28 @@ const DetailsPage = ({ movie, Id }) => {
             </div>
             <div>
               {/* runtime... */}
-              <div className="flex justify-center underline p-4 gap-10 ">
+             {movie==="movie"? <>
+              <div className="flex justify-center  p-4 gap-10 ">
                 <div>Status: {data?.status} </div>
                 <div> Released Date: {data?.release_date}</div>
-                <div> Runtime: {data?.runtime}</div>
-              </div>
+                <div> Runtime: {data?.runtime} min</div>
+              </div> <hr className="opacity-50 -mt-3" />
+             </>:
+             <>
+             <div className="flex justify-center  p-4 gap-10 ">
+                <div>Status: {data?.status} </div>
+                <div> Released Date: {data?.first_air_date}</div>
+                <div> No of Seasons: {data?.number_of_seasons}</div>
+              </div> <hr className="opacity-50 -mt-3" />
+             </>}
             </div>
 
-            <div className="flex ml-8 underline gap-4">
+            <div className="flex ml-8  gap-4 mt-3">
               Genres:
               {data?.genres?.map((genre) => (
                 <span key={genre.id}>{genre.name}</span>
               ))}
-            </div>
+            </div> <hr className="opacity-50 mt-1" />
           </div>
         </div>
       </div>
@@ -79,7 +88,7 @@ const DetailsPage = ({ movie, Id }) => {
      <div className="mt-15 ">
        <div className="ml-2 p-2 font-bold text-2xl"> Recommendation</div><CardGrid  data={recomended} endpoint={movie}/>
         <div className="ml-2 p-2 font-bold text-2xl">Similar</div><CardGrid  data={similar} endpoint={movie} />
-       <div className="ml-2 p-2 font-bold text-2xl"> Topcast</div><TopCast data={Topcast?.cast} />
+        <TopCast title={"TopCast"} data={Topcast?.cast} />
      </div>
     </>
   );
