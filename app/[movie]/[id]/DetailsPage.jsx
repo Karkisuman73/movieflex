@@ -12,7 +12,7 @@ const DetailsPage = ({ movie, Id }) => {
   const { data: recomended } = useFetch(`/${movie}/${Id}/recommendations`);
   const { data: similar } = useFetch(`/${movie}/${Id}/similar`);
   const { data: Topcast } = useFetch(`/${movie}/${Id}/credits`);
- 
+  
   return (
     <>
       <div className="">
