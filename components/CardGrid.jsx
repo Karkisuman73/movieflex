@@ -7,8 +7,8 @@ import Skeleton from './Skeleton';
 const CardGrid = ({title, data,endpoint,loading,error}) => {
   return (
     <div >
-        <p>{title}</p>
-       <div className='flex gap-4 overflow-scroll noscroll' >
+        <p className='text-3xl mt-4 '>{title}</p>
+       <div className='flex gap-4 overflow-scroll noscroll mt-2' >
             {
               error?<p>Error</p>:loading?
               Array(8).fill().map((n,i)=>(
