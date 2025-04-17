@@ -1,42 +1,14 @@
-"use client"
-import Card from '@/components/Card';
-import useFetch from '@/utiles/useFetch'
-import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'next/navigation';
-import { useInView } from 'react-intersection-observer';
-import Loader from '@/components/Loader';
+import React from 'react'
+import SearchPage from './SearchPage'
 
-
-const page = () => {
-  const [old, setOld] = useState([]);
-  const [page, setPage] = useState(1);
-    const searchParams = useSearchParams();
-    const query = searchParams.get("query");
-    const{data}=useFetch(query?`/search/multi?query=${query} & page=${page} `:null)
-    console.log(data)
-    const{ref,inView}=useInView();
-
-   useEffect(() => {
-       if (data && inView) {
-         setOld((prev)=>[...prev, ...data?.results]);
-         setPage((prev)=>prev + 1);
-       }
-     }, [inView, data]);
-    
-   
+const SearchLandingPage = async(params) => {
+  const search = await params
+  const {query} = await search.searchParams
+  console.log(query)
   return (
     <>
-       <div className=" grid grid-cols-2 gap-10 lg:grid lg:grid-cols-6 sm:grid sm:grid-cols-3">
-      {old.map((result, i) => (
-        <Card key={i} index={i} data={result} endpoint={"movie"} />
-      ))}
-        
-      </div>
-      <div ref={ref} className="flex mt-5 items-center justify-center">
-          <Loader/>
-        </div>
-    </>
+    {query && <SearchPage query={query}/>}</>
   )
 }
 
-export default page
+export default SearchLandingPage

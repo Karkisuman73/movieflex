@@ -42,8 +42,8 @@ const Card = ({ data, endpoint, index }) => {
             width={500}
             height={500}
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white p-4 text-center">
-            <p className="overflow-y-auto max-h-full scrollbar-hide ">{data?.overview? data.overview:"no overview"}</p>
+          <div className="absolute inset-0 flex items-center justify-center bg-[#000000b7] bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white p-4 text-center">
+            <p className="overflow-hidden max-h-full scrollbar-hide ">{data?.overview? data.overview:"no overview"}</p>
           </div>
 
         </motion.div>
